@@ -23,3 +23,7 @@ def verify_webhook(request: Request):
     if mode == "subscribe" and token == VERIFY_TOKEN:
         return int(challenge)
     return JSONResponse({"error": "Ошибка верификации"}, ensure_ascii=False)
+import uvicorn
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
