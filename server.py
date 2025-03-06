@@ -23,6 +23,11 @@ def verify_webhook(request: Request):
     if mode == "subscribe" and token == VERIFY_TOKEN:
         return int(challenge)
     return JSONResponse(content={"error": "Ошибка верификации"}, media_type="application/json; charset=utf-8")
+@app.post("/webhook")
+async def receive_webhook(request: Request):
+    data = await request.json()
+    print("Получен вебхук:", data)  # Выведет данные в логи
+    return JSONResponse({"status": "ok"}, media_type="application/json; charset=utf-8")
 import uvicorn
 
 if __name__ == "__main__":
