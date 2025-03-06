@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Request
 import openai
 import requests
-
+from fastapi.responses import JSONResponse
 app = FastAPI()
 
 VERIFY_TOKEN = "monkeybot123"  # Подтверждающий маркер
@@ -11,7 +11,7 @@ openai.api_key = "your_openai_api_key"
 
 @app.get("/")
 def home():
-    from fastapi.responses import JSONResponse
+
 
 return JSONResponse({"status": "Бот работает!"}, ensure_ascii=False)
 
