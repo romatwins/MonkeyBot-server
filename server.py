@@ -11,7 +11,7 @@ openai.api_key = "your_openai_api_key"
 
 @app.get("/")
 def home():
-    return JSONResponse({return JSONResponse({"status": "Бот работает!"})
+    return JSONResponse({"status": "Бот работает!"})
 
 # Верификация вебхука Instagram API
 @app.get("/webhook")
