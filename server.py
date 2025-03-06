@@ -22,4 +22,4 @@ def verify_webhook(request: Request):
 
     if mode == "subscribe" and token == VERIFY_TOKEN:
         return int(challenge)
-    return {"error": "Ошибка верификации"}
+    return JSONResponse({"error": "Ошибка верификации"}, ensure_ascii=False)
