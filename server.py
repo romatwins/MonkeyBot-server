@@ -30,5 +30,11 @@ async def receive_webhook(request: Request):
     return JSONResponse({"status": "ok"}, media_type="application/json; charset=utf-8")
 import uvicorn
 
+@app.post("/webhook")
+async def webhook_post(request: Request):
+    data = await request.json()
+    print("Получен POST-запрос:", data)  # Вывод данных в логи
+    return JSONResponse({"status": "ok"}, status_code=200)
+
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
