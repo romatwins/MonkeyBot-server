@@ -11,7 +11,7 @@ openai.api_key = "your_openai_api_key"
 
 @app.get("/")
 def home():
-    return JSONResponse({"status": "Бот работает!"}, media_type="application/json; charset=utf-8")
+    return JSONResponse(content={"status": "Бот работает!"})
 
 # Верификация вебхука Instagram API
 @app.get("/webhook")
@@ -22,7 +22,7 @@ def verify_webhook(request: Request):
 
     if mode == "subscribe" and token == VERIFY_TOKEN:
         return int(challenge)
-    return JSONResponse({"error": "Ошибка верификации"}, ensure_ascii=False)
+    return JSONResponse(content={"error": "Ошибка верификации"})
 import uvicorn
 
 if __name__ == "__main__":
