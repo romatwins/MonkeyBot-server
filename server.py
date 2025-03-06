@@ -1,8 +1,7 @@
 from fastapi import FastAPI, Request
 import openai
 import requests
-from fastapi.responses import JSONResponse
-app = FastAPI()
+
 
 VERIFY_TOKEN = "monkeybot123"  # Подтверждающий маркер
 ACCESS_TOKEN = "your_instagram_access_token"
@@ -12,8 +11,9 @@ openai.api_key = "your_openai_api_key"
 @app.get("/")
 def home():
 
-
-return JSONResponse({"status": "Бот работает!"}, ensure_ascii=False)
+    from fastapi.responses import JSONResponse
+app = FastAPI()
+    return JSONResponse({"status": "Бот работает!"}, ensure_ascii=False)
 
 # Верификация вебхука Instagram API
 @app.get("/webhook")
